@@ -30,7 +30,7 @@ const Home = () => {
         {isAdmin ? (
           <h1 className="text-blue-300">Admin</h1>
         ) : (
-          <h1 className="text-blue-300">Non admin</h1>
+          <h1 className="text-blue-300">Non-admin</h1>
         )}
         <div className="flex flex-row gap-4">
           <div>
@@ -46,7 +46,7 @@ const Home = () => {
               className="border text-white pl-4 pr-4"
               onClick={navigatePublic}
             >
-              Go to public
+              Go to Public
             </button>
           </div>
         </div>

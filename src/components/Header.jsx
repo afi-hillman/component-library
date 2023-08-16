@@ -6,7 +6,8 @@ import Drawer from "./ui/Drawer";
 const Header = () => {
   const { isAdmin, setIsAdmin } = useContext(AdminContext);
   const [showModal, setShowModal] = useState(false);
-  const [showDrawer, setShowDrawer] = useState(-25);
+  const [showDrawer, setShowDrawer] = useState(false);
+  const [drawerPosition, setDrawerPosition] = useState("right");
   const login = () => {
     setIsAdmin(true);
     setShowModal(false);
@@ -20,11 +21,20 @@ const Header = () => {
   const handleModalClose = () => {
     setShowModal(false);
   };
-  const handleDrawerOpen = () => {
-    setShowDrawer(0);
+  const handleDrawerToggle = () => {
+    setShowDrawer(!showDrawer);
+  };
+  const toggleDrawerPosition = () => {
+    setDrawerPosition(drawerPosition === "right" ? "left" : "right");
   };
   return (
     <>
+      <button
+        className="text-center bg-black/90 text-blue-300 border p-4 block w-[20%]"
+        onClick={toggleDrawerPosition}
+      >
+        Toggle Drawer Position: {drawerPosition}
+      </button>
       <Modal isShown={showModal} setShow={setShowModal}>
         <ModalHeader title="Login" subtitle="Login to continue!" />
         <ModalFooter>
@@ -43,7 +53,11 @@ const Header = () => {
           </button>
         </ModalFooter>
       </Modal>
-      <Drawer showDrawer={showDrawer} />
+      <Drawer
+        toggleDrawer={handleDrawerToggle}
+        slideIn={showDrawer ? 0 : drawerPosition === "right" ? -25 : -25}
+        position={drawerPosition}
+      />
       <div>
         <div className="flex flex-row justify-between fixed top-0 left-0 w-screen h-10 pl-20 pr-20 pt-4 border-b-white">
           <div className="text-white">LOGO</div>
@@ -54,7 +68,12 @@ const Header = () => {
             >
               {isAdmin ? "Logout" : "Login"}
             </button>
-            <button onClick={handleDrawerOpen}>DRAWER</button>
+            <button
+              className="text-center bg-black/90 text-blue-300 border pl-4 pr-4"
+              onClick={handleDrawerToggle}
+            >
+              DRAWER
+            </button>
           </div>
         </div>
       </div>
