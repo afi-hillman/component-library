@@ -20,6 +20,9 @@ const Home = () => {
   const navigatePublic = () => {
     navigate("/public");
   };
+  const navigateComponents = () => {
+    navigate("/components");
+  };
   return (
     <>
       <div className="bg-black/90 flex justify-center items-center gap-4 flex-col h-screen w-screen overflow-hidden">
@@ -47,6 +50,14 @@ const Home = () => {
               onClick={navigatePublic}
             >
               Go to Public
+            </button>
+          </div>
+          <div>
+            <button
+              className="border text-white pl-4 pr-4"
+              onClick={navigateComponents}
+            >
+              Go to Components
             </button>
           </div>
         </div>
