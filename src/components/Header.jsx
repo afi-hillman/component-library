@@ -30,7 +30,7 @@ const Header = () => {
   return (
     <>
       <button
-        className="text-center bg-black/90 text-blue-300 border p-4 block w-[20%]"
+        className="text-center bg-black/90 text-blue-300 border p-4 block w-[20%] hover:bg-black/10 transition-all"
         onClick={toggleDrawerPosition}
       >
         Toggle Drawer Position: {drawerPosition}
